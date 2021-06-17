@@ -3,9 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Welcome extends CI_Controller
 {
+	public function __construct(){
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->helper('url');
+	}
 	public function index()
 	{
-	    
+		
 	    $data['filedata'] = [];
 	    
 		$this->load->library('codeigniter-library-google-spreadsheet/Google_Spreadsheet');
@@ -30,11 +35,11 @@ class Welcome extends CI_Controller
 
 	public function oauth()
 	{
-		$this->load->helper('url');
+		
 		$this->load->library('codeigniter-library-google-spreadsheet/Google_Spreadsheet');
 		$ret = $this->google_spreadsheet->oauth_request_handler(
-			'client_secret',
-			'client_id',
+			'983699820708-regm92sn2q2e3rppb3ta8js1j4mnujlt.apps.googleusercontent.com',//client_id
+			'rmLPuJNK-Hcny5Cvi9r7-_Hj',//client_secret_key
 			// scope
 			array(
 				'https://www.googleapis.com/auth/spreadsheets',
